@@ -182,22 +182,15 @@ function esPrimo(num) {
    // [Pista 2]: puedes resolverlo utilizando un `bucle for`.
    // [Nota]: los números negativos, 0 y 1 NO son números primos.
    // Tu código:
-  if(num<0 || num=== 0, 1){
-    return false; 
-   }
-   let cumple= true;
-   if(num>1){
-     for(let i = 2; i < num; i++){
-      if(num % i == 0){
-         cumple = false;
-         break;
-      }
-     }
-     if(cumple===true){
-      return true;
-     }else if (cumple===false){
+   if (num < 2){
       return false;
-     }
+   }
+   for (var i = 2; i < num; i++){
+      if (num % i === 0){
+         return false;
+      }
+   }
+   return true;
 }
 
 function esVerdadero(valor) {
@@ -253,5 +246,5 @@ module.exports = {
    esVerdadero,
    tieneTresDigitos,
    doWhile,
-};}
+};
 
