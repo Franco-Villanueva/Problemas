@@ -6,6 +6,8 @@ function deObjetoAarray(objeto) {
    // Estos elementos debe ser cada par clave:valor del objeto recibido.
    // [EJEMPLO]: {D: 1, B: 2, C: 3} ---> [['D', 1], ['B', 2], ['C', 3]].
    // Tu código:
+   let arregloDeClavesYValores = Object.entries(objeto);
+   return (arregloDeClavesYValores);
 }
 
 function numberOfCharacters(string) {
@@ -14,6 +16,17 @@ function numberOfCharacters(string) {
    // Las letras deben estar en orden alfabético.
    // [EJEMPLO]: "adsjfdsfsfjsdjfhacabcsbajda" ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
    // Tu código:
+    let objeto = {};
+    for (let i = 0; i < string.length; i++) {
+      let letra = string[i];
+      if(objeto[letra]){
+         objeto[letra]= objeto[letra] +1;
+      }else {
+         objeto[letra] = 1;
+      }
+      
+    }
+    return objeto;
 }
 
 function capToFront(string) {
@@ -22,25 +35,74 @@ function capToFront(string) {
    // Retornar el string.
    // [EJEMPLO]: soyHENRY ---> HENRYsoy
    // Tu código:
+   let finalPalabra ="";
+   for( let i = 0; i < string.length; i++){
+      let letra = string[i];
+      if(letra === letra.toUpperCase())
+      finalPalabra += letra
+   }
+   for( let i = 0; i < string.length; i++){
+      let letra = string[i];
+      if(letra === letra.toLowerCase())
+      finalPalabra += letra
+   }
+   return finalPalabra;
 }
+//console.log(capToFront("soyHENRY"))
 
 function asAmirror(frase) {
    // Recibes una frase. Tu tarea es retornar un nuevo string en el que el orden de las palabras sea el mismo.
    // La diferencia es que cada palabra estará escrita al inverso.
    // [EJEMPLO]: "The Henry Challenge is close!"  ---> "ehT yrneH egnellahC si !esolc"
    // Tu código:
-}
+   
+      // Dividimos la frase en un arreglo de palabras utilizando el espacio en blanco como separador
+      let palabras = frase.split(' ');
+    
+      // Creamos un nuevo arreglo que contiene las palabras invertidas
+      let palabrasInvertidas = palabras.map(function(palabra) {
+        // Dividimos cada palabra en un arreglo de letras
+        let letras = palabra.split('');
+        // Invertimos el orden de las letras en el arreglo
+        let letrasInvertidas = letras.reverse();
+        // Unimos las letras invertidas en una sola palabra y la devolvemos
+        return letrasInvertidas.join('');
+      });
+    
+      // Unimos las palabras invertidas en una sola frase, utilizando el espacio en blanco como separador
+      let fraseInvertida = palabrasInvertidas.join(' ');
+    
+      // Devolvemos la frase invertida
+      return fraseInvertida;
+    }
 
+//console.log(asAmirror("hola chau"))
 function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
+   let newStr =numero.toString();
+   newStr = newStr.split("").reverse();
+   newStr = newStr.join("");
+   if(newStr == numero){
+      return "Es capicua";
+   }else{
+      return "No es capicua";
+   }
 }
 
 function deleteAbc(string) {
    // Tu tarea es eliminar las letras "a", "b" y "c" del string recibido.
    // Retorna el string sin estas letras.
    // Tu código:
+   let strFinal = "";
+   for (let i = 0; i < string.length; i++) {
+      let caracter = string[i];
+      if(caracter !== "a" && caracter !== "b" && caracter !== "c"){
+         strFinal = strFinal + caracter;
+      }
+   }
+   return strFinal;
 }
 
 function sortArray(arrayOfStrings) {
@@ -49,8 +111,12 @@ function sortArray(arrayOfStrings) {
    // de la longitud de cada string.
    // [EJEMPLO]: ["You", "are", "beautiful", "looking"]  ---> [“You", "are", "looking", "beautiful"]
    // Tu código:
+   arrayOfStrings.sort(function(a, b){
+      return a.length - b.length;
+   });
+   return arrayOfStrings;
 }
-
+//console.log(sortArray(["You", "hola", "are", "beautiful"]))
 function buscoInterseccion(array1, array2) {
    // Recibes dos arreglos de números.
    // Debes retornar un nuevo arreglo en el que se guarden los elementos en común entre ambos arreglos.
@@ -58,6 +124,17 @@ function buscoInterseccion(array1, array2) {
    // Si no tienen elementos en común, retornar un arreglo vacío.
    // [PISTA]: los arreglos no necesariamente tienen la misma longitud.
    // Tu código:
+   let iguales = [];
+   for (let i = 0; i < array1.length; i++) {
+      for (let j = 0; j < array2.length; j++) {
+         if(array1[i]===array2[j]){
+            iguales.push(array1[i]);
+         }
+         
+      }
+      
+   }
+   return iguales;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
